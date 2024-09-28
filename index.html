@@ -93,7 +93,7 @@
 </head>
 <body>
 
-    <h1>Soroban Digital</h1> <!-- Título Adicionado -->
+    <h1>Sorobã Digital</h1> <!-- Título Adicionado -->
     
     <div class="soroban-container">
         <div class="linha-separadora"></div>
@@ -151,7 +151,7 @@
     <div id="jogo-container">
         <button id="gerar-numeros">Treinar Adição</button>
         <div id="numeros"></div>
-        <button id="verificar">Corrigir</button>
+        <button id="verificar">Corrigir o Resultado Marcado no Sorobã</button>
         <div id="resultado"></div>
         <button id="botao-instrucoes">?</button>
         <div id="instrucoes">Toque nas contas e use normalmente como um sorobã. Em "Treinar Adição", gere números aleatórios para exercitar adição. Produzido por Edmilson Severino de Souza, tendo como referência o curso: "O Uso da Tecnologia Assistiva para 
@@ -212,6 +212,8 @@ Cego".  Toque em "?" para limpar este aviso.</div>
             numero2 = Math.floor(Math.random() * 100);
             document.getElementById('numeros').textContent = `Números: ${numero1} + ${numero2}`;
             document.getElementById('resultado').textContent = ''; // Limpa o resultado anterior
+            limparContas(); // Limpa as seleções das contas
+            valorDisplay.textContent = 'Valor: 0'; // Redefine o valor
         }
 
         // Verifica se a soma do soroban está correta
@@ -219,14 +221,19 @@ Cego".  Toque em "?" para limpar este aviso.</div>
             const totalSoroban = parseInt(valorDisplay.textContent.split(': ')[1]);
             const soma = numero1 + numero2;
             if (totalSoroban === soma) {
-                document.getElementById('resultado').textContent = 'Correto! Boa sorte!';
+                document.getElementById('resultado').textContent = 'Acertou! Muito bom!';
             } else {
-                document.getElementById('resultado').textContent = `Enganou-se! Resposta correta: ${soma}. Tente novamente!`;
+                document.getElementById('resultado').textContent = `Enganou-se. A resposta certa é ${soma}. Tente novamente.`;
             }
         }
 
-        // Mostra e esconde as instruções
-        document.getElementById('botao-instrucoes').addEventListener('click', () => {
+        // Limpa as seleções de todas as contas
+        function limparContas() {
+            document.querySelectorAll('.conta').forEach(conta => conta.classList.remove('ativa'));
+        }
+
+        // Exibe ou oculta as instruções
+        document.getElementById('botao-instrucoes').addEventListener('click', function() {
             const instrucoes = document.getElementById('instrucoes');
             instrucoes.style.display = instrucoes.style.display === 'none' ? 'block' : 'none';
         });
@@ -236,4 +243,3 @@ Cego".  Toque em "?" para limpar este aviso.</div>
     </script>
 </body>
 </html>
-
