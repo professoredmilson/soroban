@@ -219,9 +219,9 @@ Cego"  Toque em "?" para limpar este aviso.</div>
             const totalSoroban = parseInt(valorDisplay.textContent.split(': ')[1]);
             const soma = numero1 + numero2;
             if (totalSoroban === soma) {
-                document.getElementById('resultado').textContent = 'Correto! Boa sorte!';
+                document.getElementById('resultado').textContent = 'Correto! Muito bom!';
             } else {
-                document.getElementById('resultado').textContent = `Incorreto! Tente novamente. Resposta correta: ${soma}`;
+                document.getElementById('resultado').textContent = 'Enganou-se! Resposta correta: ${soma} Tente novamente.';
             }
         }
 
